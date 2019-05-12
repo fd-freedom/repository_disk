@@ -1,0 +1,205 @@
+<!-- 
+  /**
+  *  @description 网盘
+  *  @version  5.2.10 V
+  *  @author   Fd
+  *  @Company:自由网@
+  *  @email: nokialj18239055606@outlook.com 1315295001@qq.com
+  *  @date : 2019年3月1日20:36:56
+  */ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>自由網网盘 -设置向导</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="public/freedom.png" type="image/x-icon" />
+
+ 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<!--===============================================================================================-->
+ 
+ 
+	 
+	<link rel="stylesheet" type="text/css" href="css/mains.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div id="bg" >
+		
+	</div>
+	<div class=" ">
+
+
+		<div id="cen"   class="container-login1001">
+			<!-- <div class="wrap-login100">
+				<div class="login100-pic1 js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div> -->
+  
+				<forsm onsubmit="return sub()" action="#" method="post" class="login100-form validate-form">
+				<forsm/>
+					<span class="login100-form-title">
+						<span style='color:white' >环境检测</span>
+					</span>
+                  <table id="tb" >
+                  	<tr>
+                  		<td><b>操作系统</b></td>
+                  		<td><?=$arr['os']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	<tr>
+                  		<td><b>最大上传</b></td>
+                  		<td><?=$arr['max_file']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['max_file']['status']?>.png" alt=""></td>
+                  	</tr>
+                    <tr>
+                  		<td><b>GD 库</b></td>
+                  		<td><?=$arr['gd']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['gd']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	 <tr>
+                  		<td><b>可用内存</b></td>
+                  		<td><?=$arr['disk']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['disk']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	<tr>
+                  		<td><b>磁盘是否可写</b></td>
+                  		<td><?=$arr['write_dir']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['write_dir']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	<tr>
+                  		<td><b>PHP - 版本</b></td>
+                  		<td><?=$arr['php_v']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['php_v']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	<tr>
+                  		<td><b>当前时区</b></td>
+                  		<td><?=$arr['P']['display']?> </td>
+                  		<td><img width="25px" src="public/ico/<?=$arr['P']['status']?>.png" alt=""></td>
+                  	</tr>
+                  	 
+                  </table>   <br><br><br><br>
+                  	<span class="login100-form-title">
+						<span style='color:white' >常见问题</span>
+					</span>
+					 <table id="tb" >
+                  	<tr>
+                  		<td><b>文件 无法删除 | 移动,出现未知的致命问题:</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">文件可能正在打开 | 执行 ,尝试关闭文件</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  		<td><b>连续 3 次密码错误 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">验证成语接龙 , 点击存在连续的成语( 包含谐音字 )</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  		<td><b>临时密码设置 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">密码在有效时间内,可以正常登入 正常操作云盘( 无法操作设置 )</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  	<td><b>文件无法创建 移动 删除 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">该插件 没有可写 可读权限, 请基于 可读可写 可执行权限 777</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<td><b>上传大小限制修改 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">在PHP目录底下 php.ini 中 设置 最大允许上传 | 允许上传时间 </span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<td><b>时区设置 PRC :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red">在PHP目录底下 php.ini 中 设置时区 PRC </span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<td><b>文件存在却找不到 PRC :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:red"> 云盘的所有操作会取决于当前的文件位置进行执行 - 请点击 全部文件</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                   
+                  	 
+                  </table>   <br><br><br><br>
+					<span class="login100-form-title">
+						<span style='color:white' >使用技巧 - Help</span>
+					</span>
+					 
+             
+					 <table id="tb" >
+                  	<tr>
+                  		<td><b>想要找到文件:</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:green">使用文件搜索</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  		<td><b>知道文件内容但不知道文件 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:green">使用文件内容搜索 搜索文件存在的内容 选择合适的M大小, 过大可能会影响搜索时间</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  		<td><b>当前位置 :</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                  		<td> <span style="color:green">云盘的所有操作会取决于当前的文件位置进行执行</span> </td>
+                  		<!-- <td><img width="25px" src="public/ico/<?=$arr['os']['status']?>.png" alt=""></td> -->
+                  	</tr>
+                  	<tr>
+                  	 
+                 
+                   
+                  	 
+                  </table>   <br><br><br><br>
+					<span class="login100-form-title">
+						<span style='color:white' >管理员密码设置</span>
+					</span>
+					<form method="post" action="index.php?fd=indexInit">
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input sd='sd' class="input100" type="password" name="pwd" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+			 
+					
+
+
+					 
+					  
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							开始配置
+						</button>
+					</div>
+
+</form>
+
+		</div>
+	</div>
+	
+	
+
+	
+ 
+
+</body>
+</html> 
+<script src="<?=$PUBLIC?>layui/layui.all.js" ></script>
+ <script src="<?=$PUBLIC?>js/jquery-1.10.2.js" ></script>
+ <script src="<?=$PUBLIC?>js/FD.js" ></script>
+ <script>
+
+$("#tb").css({'width': $("#cen").width()-100})
+$("#bg").css({'width': $(window).width()+100,'height': $(window).height()+100})
+$("#cen").css({'left':($(window).width()/2)-($("#cen").width()/2)})
+$("#cen").css({'top':($(window).height()/2)-($("#cen").height()/2)})
+ 
+$(document).on("mousemove",function(event){
+ x = event.clientX / 20
+ y =  event.clientY/20
+ console.log( y)
+ $("#bg").css("left",-x+'px')
+ $("#bg").css("top",-y+'px')
+
+})
+ </script>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>云端 - Excel</title>
+	<link rel="icon" href="public/freedom.png" type="image/x-icon" />
+		<link rel="stylesheet" href="<?=$PUBLIC?>layui/css/layui.css">
+</head>
+<body>
+<input id="range" style="width:100%" min="500" value="1200" max="5000" type="range">
+<table fd='s' style="width:100%" class="layui-table"  >
+  <thead>
+     
+    <?php foreach ($data as $key => $value): ?>
+    	<tr>
+    	   <?php foreach ($value as $keys => $values): ?>
+    		  	<td><?=$values?></td>
+    		  <?php endforeach ?>
+    	</tr>
+    <?php endforeach ?>
+  </thead>
+</table>
+    
+</body>
+</html>
+<script src="<?=$PUBLIC?>js/jquery-1.10.2.js" ></script>
+<script src="<?=$PUBLIC?>layui/layui.all.js" ></script>
+<script>
+	 $("#range").val($("table[fd='s']").width());
+
+	 $("#range").on("change",function(){
+	 	$("table[fd='s']").css("width",$("#range").val())
+	 })
+</script>

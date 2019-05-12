@@ -1,0 +1,124 @@
+
+<!-- /**
+*  @description 网盘
+*  @version  5.2.10 V
+*  @author   Fd
+*  @Company:自由网@
+*  @email: nokialj18239055606@outlook.com 1315295001@qq.com
+*  @date : 2019年3月1日20:36:56
+*/   -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自由网 - 云端</title>
+  <meta http-equiv="Page-Enter" content="revealTrans(5,12)">
+    <link rel="stylesheet" href="<?=$PUBLIC?>css/style.css">
+	<link rel="stylesheet" href="<?=$PUBLIC?>layui/css/layui.css">
+	<link rel="icon" href="public/freedom.png" type="image/x-icon" />
+  <!-- <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui"> -->
+</head>
+<body scroll="no" >
+<div style="display:none" id="float" class="float">
+  <span class="floats" >1%</span>
+ <div style="top:30px;" class="layui-progress">
+  <div id="plan"  class="layui-progress-bar" lay-percent="1%"></div>
+
+</div>
+</div>
+ <input id="files" style="display:none" name="files" type="file" multiple />
+ <input id="now_path" value="<?=$path?>" type="hidden">
+ <input id="temp_path" name="" path="" ty="" type="hidden"> <!-- 路径暂存 类型暂存 名称 -->
+ <input id="temp_move" name="" path="" ty="" type="hidden"> <!-- 移动到 路径暂存 -->
+ <input id="copy" style="opacity: 0;position: absolute;width:2px;height:0px" type="s"> <!-- 浏览器复制命令 -->
+ <ul id="show_menu" style="display:none" class="right_key">
+     <a type="open" href="javascript:0">打开</a> 
+    <a type="open_zip" href="javascript:0">解压压缩包</a> 
+ 	   <a type="open_create" href="javascript:0">新窗口打开</a>
+     <a type="share" href="javascript:0">分享</a> 
+     <a type="updata" href="javascript:0">编辑文件</a> 
+      <a type="show_path" href="javascript:0">查看当前路径</a> 
+     <a type="create_zip" href="javascript:0">添加到压缩包</a> 
+     <a type="down" href="javascript:0">下载</a> 
+     <a type="move" href="javascript:0">移动到</a> 
+     <a type="copy" href="javascript:0">复制到</a> 
+     <a type="rename" href="javascript:0">重命名</a> 
+     <a type="delete" href="javascript:0">删除</a> 
+ </ul>
+ 
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header_left">
+         <a id="logos" status='1' href="javascript:0"> <div class="logo"><!-- logo --></div></a>
+
+        </div>
+        <div class="header_right">
+           <a style="float:left" class="up_a" href="javascript:0"> <label style="cursor:pointer" for="files"><div class="up"></div></label></a>
+            <a style="float:left"   class="layui-btn layui-btn-radius layui-btn-normal" id="up_a1" href="javascript:0">设置 - Serve </a>
+
+
+        </div>
+    </div>
+    <div class="body">
+        <div class="body_left">
+            <ul class="body_left_nav">
+             
+                <li type_li="create_dir"> <div class="left_ico" style="background-image:url('public/ico/file_add.png')"></div> <a href="javascript:void(0)">新建文件夹</a></li>
+                <li type_li="create_file"> <div class="left_ico" style="background-image:url('public/ico/file_create.png')"></div> <a href="javascript:void(0)">新建文件</a></li>
+                <li type_li="search"> <div class="left_ico" style="background-image:url('public/ico/search.png')"></div> <a href="javascript:void(0)">文件搜索</a></li>
+                <li type_li="search_value"> <div class="left_ico" style="background-image:url('public/ico/fd.png')"></div> <a  title="知道文件内容,但不知道文件 " href="javascript:void(0)">文件内容搜索</a></li>
+                <li type_li="search_FD" type='zip,tar,gz'> <div class="left_ico" style="background-image:url('public/ico/zip.png')"></div> <a href="javascript:void(0)">全部压缩包</a></li>
+                <li type_li="search_FD" type='mp4,ogg'> <div class="left_ico" style="background-image:url('public/ico/mp4.png')"></div> <a href="javascript:void(0)">全部视频</a></li>
+                <li type_li="search_FD" type='mp3,wav'> <div class="left_ico" style="background-image:url('public/ico/mp3.png')"></div> <a href="javascript:void(0)">全部音乐</a></li>
+                <li type_li="search_FD" type='ico,png,jpg,bmp,gif,jpge'> <div class="left_ico" style="background-image:url('public/ico/img.png')"></div> <a href="javascript:void(0)">全部图片</a></li>
+                <li type_li="search_FD" type='txt'> <div class="left_ico" style="background-image:url('public/ico/txt.png')"></div> <a href="javascript:void(0)">全部文本</a></li>
+                <li  type_li='move' style="display:none;" > <div class="left_ico" style="background-image:url('public/ico/file_move.png')"></div> <a style="color:red" href="javascript:void(0)">移动到 ></a></li>
+                <li  type_li='copy' style="display:none;" > <div class="left_ico" style="background-image:url('public/ico/file_move.png')"></div> <a style="color:red" href="javascript:void(0)">复制到 ></a></li>
+                <!-- <li><a href="javascript:void(0)">创建文件</a></li> -->
+              
+            </ul>
+            <div class="body_left_save">
+                <div class="body_left_save_long">
+                    <div class="layui-progress layui-progress-big" lay-showPercent="true">
+                     <div class="layui-progress-bar layui-bg-blue" lay-percent="<?=$memory['t']?>%"></div>
+                   </div>
+                   <div style="top:5px ;position: relative;margin:0 auto;" >
+                      <a href="javascript:alert('<?=php_uname();?>')"><span ><?=$memory['use']?> G / <?=$memory['init']?> G   &nbsp&nbsp </a></span>
+                      <a href="javascript:alert('<?=php_uname();?>')"> Info </a></span>
+                
+                   </div>
+                </div>
+               
+                
+            </div>
+        </div>
+        <div class="body_right">
+                   <li class="comment_li_display"   >
+                         <a href="javascript:0" path="'+temp+'">  &nbsp &nbsp &nbsp &nbsp 全部文件  </a> 
+                   </li>
+             <ul class="comment">
+            
+
+             	  <?php foreach ($files_all as $key => $value): ?>
+                    <li class='comment_li' path="<?=$value['path']?>" t='<?=$value['type']?>'  name='<?=$value['name']?>' > <input class='ched' t='<?=$value['type']?>' type='checkbox'><a class='comment_imgs' href='javascript:0'><div style="background-image:url('public/ico/<?=$value['type']?>.png')"  ></div><?=$value['name']?></a></li>
+             	   <?php endforeach ?>
+             </ul>
+        </div>
+    </div>
+</body>
+</html>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Hide
+function killErrors() {
+return true;
+}
+window.onerror = killErrors;
+// -->
+</SCRIPT>
+<script src="<?=$PUBLIC?>layui/layui.all.js" ></script>
+ <script src="<?=$PUBLIC?>js/jquery-1.10.2.js" ></script>
+ <script src="<?=$PUBLIC?>js/FD.js" ></script>
+ <script src="<?=$PUBLIC?>js/indexIndex.js" ></script>
+
+ 
+                                            

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>系统 - system - FD</title>
+	<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui">
+	<link rel="icon" href="public/freedom.png" type="image/x-icon" />
+    <link rel="stylesheet" href="<?=$PUBLIC?>layui/css/layui.css">
+
+     <style>
+     #span{
+   width: 20px;
+   background-color: red;
+ margin-left: 20px;
+     	}
+     	.table{
+     		width:100%;
+     		background-color: #dde0e4;
+     		height: 40px;
+     		display: block;
+     		/*color: #ccc;*/
+     		font-size: 16px;
+     		font-weight: bold;
+     		line-height: 40px;
+     		/*left: 50px;*/
+     	}
+     	.img{
+     		width: 60px;
+     		height: 60px;
+     		margin-left: 10px;
+     	}
+     	.input{
+     		height: 35px;
+     		/*border-radius: 2px;*/
+     		text-indent: 10px;
+
+     	}
+      .text{
+         font-weight: normal;
+
+      }
+    </style>
+</head>
+<body>
+<div class="table">
+	
+</div>
+	<blockquote style="cursor:pointer;" class="layui-elem-quote"> 
+	<b>当前系统 :</b> <span id="span"></span>  <?=$system['sy']?>   <br>
+	<b>云端版本 :</b> <span id="span"></span>  <?=$system['free']?>    <a style="color:red" href="javascript:alert('Q群:227860630')">版本群</a><br>
+	<b>运行环境 :</b> <span id="span"></span>  <?=$system['apache_getversion']?>   <br>
+	<b>PHP 版本 :</b> <span id="span"></span>  <?=$system['php_version']?>   <br>
+	<b>剩余空间 :</b> <span id="span"></span>  <?=$system['disk']?>  G <br>
+
+	</blockquote>
+	<div class="table">
+	 &nbsp &nbsp &nbsp  支持在线文件类型
+    </div>
+	<blockquote style="cursor:pointer;" class="layui-elem-quote"> 
+	 <img class="img" src="public/ico/js.png" title="JavaScript" alt=""> 
+	 <img class="img" src="public/ico/css.png" title="CSS" alt=""> 
+	 <img class="img" src="public/ico/dir.png" title="文件夹" alt=""> 
+	 <img class="img" src="public/ico/fd.png" title="FD专用格式" alt=""> 
+	 <img class="img" src="public/ico/file_add.png" title="文件夹添加" alt=""> 
+	 <img class="img" src="public/ico/file_create.png" title="文件创建" alt=""> 
+	 <img class="img" src="public/ico/file_move.png" title="文件移动 | 复制" alt=""> 
+	 <img class="img" src="public/ico/html.png" title="HTML" alt=""> 
+	 <img class="img" src="public/ico/img.png" title="图片" alt=""> 
+	 <img class="img" src="public/ico/mp3.png" title="歌曲" alt=""> 
+	 <img class="img" src="public/ico/mp4.png" title="视频" alt=""> 
+	 <img class="img" src="public/ico/src.png" title="分享" alt=""> 
+	 <img class="img" src="public/ico/txt.png" title="文本" alt=""> 
+	 <img class="img" src="public/ico/zip.png" title="压缩包" alt=""> 
+	 <img class="img" src="public/ico/xls.png" title="Excel 在线预览" alt=""> 
+	 <img class="img" src="public/ico/up.png" title="文件上传" alt=""> 
+	 <img class="img" src="public/ico/search.png" title="文件搜索" alt=""> 
+	 
+
+	</blockquote>
+	<div class="table">
+	 &nbsp &nbsp &nbsp   临时访客密码生成 &nbsp | &nbsp 系统密码修改
+    </div>
+	<blockquote style="cursor:pointer;" class="layui-elem-quote"> 
+	   <form class="layui-form" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">临时密码 :</label>
+    
+      <input id="temp_name" class="input" type="text" name="title" style="width:20%"   placeholder="输入密码" autocomplete="off">
+       &nbsp  &nbsp &nbsp &nbsp &nbsp到期时间 : <input class="input" type="datetime-local" name="title" style="width:20%"   placeholder="" id="temp_time" autocomplete="off" >  &nbsp &nbsp &nbsp<button id="but_temp_visitor" type="button" class="layui-btn layui-btn-warm"> 添加临时访客 </button>&nbsp &nbsp &nbsp<button id="but_temp_visitor_clear" type="button"   class="layui-btn layui-btn-danger"> 清空所有访客 </button>  <br> <br>
+       <hr  ><br>
+       <label class="layui-form-label">原始密码 :</label>
+    
+      <input id="init_pwd" class="input" type="text" name="title" style="width:20%"   placeholder="输入旧的密码" autocomplete="off">
+       &nbsp  &nbsp &nbsp &nbsp &nbsp新的密码 : <input class="input" type="text" name="title" style="width:20%"   placeholder="新的密码" id="new_pwd" autocomplete="off" >  &nbsp &nbsp &nbsp<button id="passwd_init" type="button"  class="layui-btn layui-btn-normal"> 执行密码更改 </button> <br>
+
+
+    </div>
+	</blockquote>
+<!--   <div class="table">
+   &nbsp &nbsp &nbsp  日志 &nbsp -  &nbspLog
+    </div>
+  <blockquote style="cursor:pointer;" class="layui-elem-quote"> 
+    
+
+  </blockquote> -->
+  <div class="table">
+   &nbsp &nbsp &nbsp   备忘录&nbsp &nbsp   - &nbsp &nbsp  <button id="text_bc" type="button"  class="layui-btn layui-btn-normal"> 保存 </button
+    </div>
+  <blockquote style="cursor:pointer;" class="layui-elem-quote"> 
+    <textarea name=""  class="text" id="c2"  placeholder="即可记录下容易忘的东西"  cols="40" rows="10"><?=$mem;?></textarea>
+
+    </div>
+  </blockquote>
+
+
+
+
+</body>
+</html>
+ <script src="<?=$PUBLIC?>js/FD.js" ></script>
+<script src="<?=$PUBLIC?>layui/layui.all.js" ></script>
+<script src="<?=$PUBLIC?>js/jquery-1.10.2.js" ></script>
+<script>
+	
+$("#but_temp_visitor").on("click",function(){
+  temp_name  = $("#temp_name").val();
+  temp_time  = $("#temp_time").val();
+  if (temp_name==""||temp_time==""){
+  	layer.msg('密码为空  |   时间不合法 参考样式 2018/5/1 13:15'); 
+    return false;
+  };
+    $.ajax({
+      url:"index.php?fd=indexVisitor",
+      type:"post",
+      data:{temp_name:temp_name,temp_time:temp_time},
+      success:function(event){
+        event = JSON.parse(event)
+         if (event.code==1) {
+           layer.msg('临时密码设置成功'); 
+         }else{
+         layer.msg('临时密码设置,发生致命错误  !!'); 
+         }
+      }
+    })
+
+})
+$("#c2").css('height',document.body.offsetHeight/2)
+$("#c2").css('width',"100%")
+$("#but_temp_visitor_clear").on("click",function(){
+  
+    $.ajax({
+      url:"index.php?fd=indexVisitor_clear",
+      type:"post",
+      success:function(event){
+        event = JSON.parse(event)
+         if (event.code==1) {
+           layer.msg('清除成功'); 
+         }else{
+         layer.msg('清除,发生致命错误  !!'); 
+         }
+      }
+    })
+
+})
+//密码修改
+$("#passwd_init").on("click",function(){
+  init_pwd  = $("#init_pwd").val();
+  new_pwd  = $("#new_pwd").val();
+  console.log(new_pwd)
+  if (init_pwd==""||new_pwd==""){
+    layer.msg('原始为空  |   密码为空'); 
+    return false;
+  };
+    $.ajax({
+      url:"index.php?fd=indexVisitor_PWD",
+      type:"post",
+      data:{init_pwd:init_pwd,new_pwd:new_pwd},
+      success:function(event){
+        event = JSON.parse(event)
+         if (event.code==1) {
+           layer.msg('新的密码设置成功,再次登入生效'); 
+         }else if(event.code=='-2'){
+         layer.msg('提供原始密码错误 ,修改未成功 !'); 
+         }
+      }
+    })
+
+})
+$("#text_bc").on("click",function(){
+  value = $("#c2").val();
+  $.ajax({
+      url:"index.php?fd=indexSystem_set_note",
+      type:"post",
+      data:{value:value},
+      success:function(event){
+        event = JSON.parse(event)
+         if (event.code==1) {
+           layer.msg('保存成功'); 
+         }else {
+         layer.msg('保存错误 ,修改未成功 !'); 
+         }
+      }
+    })
+   
+})
+</script>

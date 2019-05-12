@@ -1,0 +1,147 @@
+<!-- 
+  /**
+  *  @description 网盘
+  *  @version  5.2.10 V
+  *  @author   Fd
+  *  @Company:自由网@
+  *  @email: nokialj18239055606@outlook.com 1315295001@qq.com
+  *  @date : 2019年3月1日20:36:56
+  */ -->
+<!-- 
+  /**
+  *  @description 网盘
+  *  @version  5.2.10 V
+  *  @author   Fd
+  *  @Company:自由网@
+  *  @email: nokialj18239055606@outlook.com 1315295001@qq.com
+  *  @date : 2019年3月1日20:36:56
+  */ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>自由網</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="public/freedom.png" type="image/x-icon" />
+
+ 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<!--===============================================================================================-->
+ 
+ 
+	 
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div id="bg" >
+		
+	</div>
+	<div class="limiter">
+		<div id="cen"   class="container-login1001">
+			<!-- <div class="wrap-login100">
+				<div class="login100-pic1 js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div> -->
+
+				<forsm onsubmit="return sub()" action="#" method="post" class="login100-form validate-form">
+				<forsm/>
+					<span class="login100-form-title">
+						<span style='color:white' >自由網</span>
+					</span>
+
+				 
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input sd='sd' class="input100" type="password" name="pwd" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+				 <input   name="code" value="1" type="hidden">
+					
+
+
+					 
+					  
+					<div class="container-login100-form-btn">
+						<button type="button" class="login100-form-btn">
+							登入
+						</button>
+					</div>
+
+
+
+		</div>
+	</div>
+	
+	
+
+	
+ 
+
+</body>
+</html> 
+<script src="<?=$PUBLIC?>layui/layui.all.js" ></script>
+ <script src="<?=$PUBLIC?>js/jquery-1.10.2.js" ></script>
+ <script src="<?=$PUBLIC?>js/FD.js" ></script>
+ <script>
+
+$("#bg").css({'width': $(window).width()+100,'height': $(window).height()+100})
+$("#cen").css({'left':($(window).width()/2)-($("#cen").width()/2)})
+$("#cen").css({'top':($(window).height()/2)-($("#cen").height()/2)})
+$(document).on("mousemove",function(event){
+ x = event.clientX / 20
+ y =  event.clientY/20
+ console.log( y)
+ $("#bg").css("left",-x+'px')
+ $("#bg").css("top",-y+'px')
+
+})
+
+
+
+$("button[type='button']").on("click",function(){
+ajax = $("input[sd='sd']").val()
+code = $("input[name='code']").val()
+// if (code==0) {
+//     layer.open({
+//         title: '验证码 - 点击以下正确成语 !?',
+//         // maxmin: true,
+//         type: 2,
+//         content: "index.php?fd=indexCode",
+//         area: ['470px','510px']
+//     });
+//     return false;
+
+// };
+	 $.ajax({
+                url:"index.php?fd=indexLogin_check",
+                type:"post",
+                data:{ajax:ajax},
+                success:function(event){
+                  event = JSON.parse(event)
+                  if (event.code=='1') {
+                    layer.msg('密码正确,如果没跳转,请刷新 !');
+                     code = $("input[name='code']").val('1')
+                    location.href = event.location;
+                  }else if(event.code=='-1'){
+                      layer.msg('密码错误 '+event.location+' 次 !');
+                  }else if(event.code=='-2'){
+                       code = $("input[name='code']").val('0')
+                         index =  layer.open({
+						        title: '验证码 - 点击以下正确成语 !?',
+						        // maxmin: true,
+						        type: 2,
+						        content: "index.php?fd=indexCode",
+						        area: ['470px','510px'] ///兼容BUG
+						    });
+                           
+                  }
+                }
+            })
+
+})
+ </script>
+
